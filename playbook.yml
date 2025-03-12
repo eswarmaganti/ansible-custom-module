@@ -1,0 +1,23 @@
+---
+- name: playbook to run the custom module
+  hosts: localhost
+  gather_facts: true
+  tasks:
+    - name: run the greeting module
+      greeting:
+        name: "Eswar Krishna Maganti"
+      register: greeting
+
+    - name: run the greeting module for failed case
+      greeting:
+        name: ''
+      register: greeting_failure
+
+    - name: debug the output for failure case
+      debug:
+        var: greeting_failure
+      ignore_errors: true
+
+    - name: debug the output for success case
+      debug:
+        var: greeting
