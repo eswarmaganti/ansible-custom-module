@@ -1,0 +1,17 @@
+---
+- name: Playbook to add user to json file
+  hosts: localhost
+  gather_facts: true
+  tasks:
+    - name: add user
+      add_user:
+        name: Eswar Krishna Maganti
+        email: maganti.ek@gmail.com
+        designation: Consultant
+        company: CapGemini
+        filepath: /Users/eswarmaganti/Developer/Projects/DevOps/ansible-custom-module/data/data.json
+      register: output
+
+    - name: debug the output
+      debug:
+        var: output
